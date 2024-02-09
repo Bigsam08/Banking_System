@@ -11,11 +11,11 @@ struct client
     char  sex [8];
     int age;
     char NIN[12];
-    char phone [15];
+    char phone [20];
     double  bal;
-    char type[8];
-    char branch[10];
-    int accnum;
+    char type[10];
+    char branch[15];
+    char accnum[15];
     char  dop[12];
 } create, seek;
 
@@ -38,7 +38,7 @@ void end()
             {
                 printf(".");
                 fflush(stdout);
-                sleep(2);
+                sleep(1);
             }
             system("clear");
             exit(0);
@@ -87,47 +87,46 @@ void add_record()
     fgets(create.name, sizeof(create.name), stdin);
     rmspace(create.name);
 
-    printf("\n2. ADDRESS: ");
+    printf("2. ADDRESS: ");
     fgets(create.address, sizeof(create.address), stdin);
     rmspace(create.address);
 
-    printf("\n3. SEX: ");
+    printf("3. SEX: ");
     fgets(create.sex, sizeof(create.sex), stdin);
     rmspace(create.sex);
 
-    printf("\n4. AGE: ");
+    printf("4. AGE: ");
     scanf(" %d", &create.age);
     getchar();
 
-    printf("\n5. NIN: ");
+    printf("5. NIN: ");
     fgets(create.NIN, sizeof(create.NIN), stdin);
     rmspace(create.NIN);
 
-    printf("\n6. PHONE NUMBER: ");
+    printf("6. PHONE NUMBER: ");
     fgets(create.phone, sizeof(create.phone), stdin);
     rmspace(create.phone);
 
-    printf("\n7. D.O.B (DD/MM/YYYY): ");
+    printf("7. D.O.B (DD/MM/YYYY): ");
     fgets(create.dob, sizeof(create.dob), stdin);
     rmspace(create.dob);
 
-    printf("\n8. ACCOUNT NUMBER: ");
-    scanf(" %d", &create.accnum);
-    getchar();
+    printf("8. ACCOUNT NUMBER: ");
+    fgets(create.accnum, 15, stdin);
 
-    printf("\n9. OPENING BALANCE: ₦");
+    printf("9. OPENING BALANCE: ₦");
     scanf(" %lf", &create.bal);
     getchar();
 
-    printf("\n10. DATE OF OPENING(DD/MM/YYYY): ");
+    printf("10. DATE OF OPENING(DD/MM/YYYY): ");
     fgets(create.dop, sizeof(create.dop), stdin);
     rmspace(create.dop);
 
-    printf("\n11. TYPE OF ACCOUNT(SAVINGS/CURRENT/FIXED): ");
+    printf("11. TYPE OF ACCOUNT(SAVINGS/CURRENT/FIXED): ");
     fgets(create.type, sizeof(create.type), stdin);
     rmspace(create.type);
 
-    printf("\n12. BRANCH: ");
+    printf("12. BRANCH: ");
     fgets(create.branch, sizeof(create.branch), stdin);
     rmspace(create.branch);
     
@@ -137,7 +136,7 @@ void add_record()
         printf("\nERROR OPENING FILE\n");
         exit(1);
     }
-    fprintf(ptr,"Name: %s\nAddress: %s\nSex: %s\nAge: %d\nNIN: %s\nPhone No: %s\nD.O.B: %s\nAccount number: %d\nBalance: ₦%.2lf\nOpening date: %s\nAccount type: %s\nBranch: %s\n\n---------------------------------------------\n", create.name, create.address, create.sex, create.age, create.NIN, create.phone, create.dob, create.accnum, create.bal, create.dop, create.type, create.branch);
+    fprintf(ptr,"Name: %s\nAddress: %s\nSex: %s\nAge: %d\nNIN: %s\nPhone No: %s\nD.O.B: %s\nAccount number: %s\nBalance: ₦%.2lf\nOpening date: %s\nAccount type: %s\nBranch: %s\n\n---------------------------------------------\n", create.name, create.address, create.sex, create.age, create.NIN, create.phone, create.dob, create.accnum, create.bal, create.dop, create.type, create.branch);
 
     fclose(ptr);
     system("clear");
